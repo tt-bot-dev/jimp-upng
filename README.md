@@ -28,7 +28,7 @@ First frame's disposal method
 #### `blend: number`
 First frame's blending method
 
-### `ImageFrame`
+### ImageFrame
 Represents a frame within an image.
 
 #### `delay: number`
