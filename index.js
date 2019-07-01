@@ -5,15 +5,28 @@ const upng = require("upng-js"),
     trueMime = "image/apng";
 
 function decode(data) {
-    const d = upng.decode(data);
-    this._colorType = d.ctype;
-    this.colorDepth = d.depth;
-    this.frames = d.frames.map(f => new ImageFrame(f));
+    const d = upng.decode(data.buffer);
     return {
-        data: d.data,
+        data: Array.from(d.data),
         width: d.width,
-        height: d.height
-    }
+        height: d.height,
+
+        // HACK: JIMP does not pass the image along :(
+        frames: d.frames.length ? d.frames.slice(1).map(f => new ImageFrame(f)) : [],
+        colorDepth: d.depth,
+        colorType: d.ctype,
+        delay: d.frames[0].delay,
+        dispose: d.frames[0].dispose,
+        blend: d.frames[0].blend
+    };
+}
+
+function encode(img) {
+    return upng.encode([img.bitmap.data, ...img.bitmap.frames.map(f => f.data)],
+        img.bitmap.width,
+        img.bitmap.height,
+        0,
+        [img.bitmap.delay, ...img.bitmap.frames.map(f => f.delay)]);
 }
 const ex = () => ({
     mime: {
@@ -30,33 +43,19 @@ const ex = () => ({
     },
     decoders: {
         [mime]() {
-            return decode.call(this, arguments);
+            return decode.apply(this, arguments);
         },
         [trueMime]() {
-            return decode.call(this, arguments);
+            return decode.apply(this, arguments);
         }
     },
     encoders: {
-        [mime](img) {
-            return upng.encode([img.bitmap.data, ...img.frames.map(f => f.bitmap.data)],
-            img.bitmap.width,
-            img.bitmap.height,
-            0,
-            [img.delay, ...img.frames.map(f => f.delay)]);
+        [mime]() {
+            return encode.apply(this, arguments);
         },
-        [trueMime](img) {
-            return Buffer.from(upng.encode([img.bitmap.data.buffer, ...img.frames.map(f => f.bitmap.data.buffer)],
-            img.bitmap.width,
-            img.bitmap.height,
-            0,
-            [img.delay, ...img.frames.map(f => f.delay)]));
+        [trueMime]() {
+            return encode.apply(this, arguments);
         }
-    },
-    class: {
-        _colorType: 0,
-        frames: [],
-        colorDepth: 0,
-        delay: 0
     }
 });
 
@@ -78,7 +77,7 @@ ex.APNGFrameDisposal = {
      * Restore the frame to the previous frame
      */
     PREVIOUS: 2
-}
+};
 
 /**
  * The methods of frame blending
@@ -93,6 +92,6 @@ ex.APNGFrameBlend = {
      * Composite the image over the old source
      */
     OVER: 1
-}
+};
 
 module.exports = ex;

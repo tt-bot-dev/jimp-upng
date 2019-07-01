@@ -1,3 +1,4 @@
+"use strict";
 class ImageFrame {
     constructor(rawFrameData) {
         /**
@@ -39,9 +40,9 @@ class ImageFrame {
 
         /**
          * The color data
-         * @type {Uint8Array}
+         * @type {number[]}
          */
-        this.data = rawFrameData.data;
+        this.data = Array.isArray(rawFrameData.data) ? rawFrameData.data : Array.from(rawFrameData.data);
 
         /**
          * The delay of the frame in milliseconds
@@ -55,14 +56,18 @@ class ImageFrame {
     }
 
     /**
-     * Returns a JIMP compatible bitmap
+     * Returns a JIMP compatible bitmap with the frame metadata
      */
     get bitmap() {
         return {
             width: this.width,
             height: this.height,
-            data: Buffer.from(this.data.buffer)
-        }
+            data: this.data,
+
+            delay: this.delay,
+            dispose: this.dispose,
+            blend: this.blend
+        };
     }
 
     /**
@@ -86,11 +91,11 @@ class ImageFrame {
                 height: (opts && opts.rect &&
                     opts.rect.height != null) ? opts.rect.height : img.bitmap.height
             },
-            data: Uint8Array.from(img.bitmap.data)
+            data: img.bitmap.data
         }, o);
         return new ImageFrame({
             ...opt,
-        })
+        });
     }
 }
 

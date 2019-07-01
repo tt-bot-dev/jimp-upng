@@ -1,9 +1,9 @@
 {
-  "name": "jimp-plugin-apng",
+  "name": "jimp-upng",
   "version": "1.0.0",
-  "description": "A plugin for JIMP that allows using APNG by switching out the default PNG parser.",
+  "description": "Switches out the default JIMP PNG parser for UPNG.js",
   "main": "index.js",
-  "repository": "https://github.com/tt-bot-dev/jimp-plugin-apng",
+  "repository": "https://github.com/tt-bot-dev/jimp-upng",
   "author": "TTtie <tttiett@outlook.com>",
   "contributors": [
     "tt.bot dev team (https://github.com/tt-bot-dev)"
