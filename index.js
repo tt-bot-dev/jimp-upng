@@ -7,7 +7,7 @@ const upng = require("upng-js"),
 function decode(data) {
     const d = upng.decode(data.buffer);
     return {
-        data: Array.from(d.data),
+        data: d.data,
         width: d.width,
         height: d.height,
 
@@ -22,11 +22,11 @@ function decode(data) {
 }
 
 function encode(img) {
-    return upng.encode([img.bitmap.data, ...img.bitmap.frames.map(f => f.data)],
+    return Buffer.from(upng.encode([img.bitmap.data.buffer, ...img.bitmap.frames.map(f => f.data.buffer)],
         img.bitmap.width,
         img.bitmap.height,
         0,
-        [img.bitmap.delay, ...img.bitmap.frames.map(f => f.delay)]);
+        [img.bitmap.delay, ...img.bitmap.frames.map(f => f.delay)]));
 }
 const ex = () => ({
     mime: {

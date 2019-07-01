@@ -43,7 +43,7 @@ Represents the position of the frame on X axis and Y axis respectively
 The width of the frame
 #### `height: number`
 The width of the frame
-#### `data: number[]`
+#### `data: Uint8Array`
 The raw image data
 #### `raw: object`
 The input from UPNG.js
