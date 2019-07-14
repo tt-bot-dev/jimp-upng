@@ -18,7 +18,7 @@ describe("static image", function() {
     it("has blend undefined", function() {
         expect(image.blend).not.toBeDefined()
     })
-    it("has dispose undefined", functiom() {
+    it("has dispose undefined", function() {
         expect(image.dispose).not.toBeDefined()
     })
 });
