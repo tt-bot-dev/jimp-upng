@@ -15,8 +15,15 @@ steps:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 
+# https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png
+# is licensed under CC-BY-SA 3.0: view the license at
+# https://creativecommons.org/licenses/by-sa/3.0/deed.en
 - script: |
-    npm install
+    curl https://upload.wikimedia.org/wikipedia/commons/1/14/Animated_PNG_example_bouncing_beach_ball.png -o apng-image.png
+    curl https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png -o png-image.png
+  displayName: "Download testing images"
+
+- script: npm install
   displayName: 'npm install'
 
 - script: echo noop
