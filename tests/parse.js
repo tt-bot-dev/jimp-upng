@@ -4,7 +4,7 @@ const { readFileSync } = require("fs");
 describe("static image", function() {
     const image = decode(readFileSync("./png-image.png"));
     it("has 0 frames", function() {
-        expect(image.frames).toBe(0);
+        expect(image.frames.length).toBe(0);
     });
     it("has colorType defined", function() {
         expect(image.colorType).toBeDefined()
