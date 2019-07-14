@@ -22,3 +22,25 @@ describe("static image", function() {
         expect(image.dispose).not.toBeDefined()
     })
 });
+
+describe("animated image", function() {
+    const image = decode(readFileSync("./png-image.png"));
+    it("has 19 frames excluding the first frame", function() {
+        expect(image.frames.length).toBe(19);
+    });
+    it("has colorType defined", function() {
+        expect(image.colorType).toBeDefined()
+    })
+    it("has colorDepth defined", function() {
+        expect(image.colorDepth).toBeDefined()
+    });
+    it("has delay defined", function() {
+        expect(image.delay).toBeDefined()
+    })
+    it("has blend undefined", function() {
+        expect(image.blend).toBeDefined()
+    })
+    it("has dispose undefined", function() {
+        expect(image.dispose).toBeDefined()
+    })
+});
