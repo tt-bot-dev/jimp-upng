@@ -26,5 +26,13 @@ steps:
 - script: npm install
   displayName: 'npm install'
 
-- script: echo noop
+- script: |
+    npm install jasmine
+    npm install github:appcelerator/jasmine-junit-reporter
+    npx jasmine --config=jasmine.cfg.json --reporter=jasmine-junit-reporter
   displayName: "Run the tests"
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFiles: junit_report.xml
+  displayName: Publish test results
