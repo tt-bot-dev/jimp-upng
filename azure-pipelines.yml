@@ -30,6 +30,7 @@ steps:
     npm install -g jasmine
     npm install -g github:appcelerator/jasmine-junit-reporter
     jasmine --config=jasmine.cfg.json --reporter=jasmine-junit-reporter
+    cat junit_report.xml 
   displayName: "Run the tests"
 
 - task: PublishTestResults@2
