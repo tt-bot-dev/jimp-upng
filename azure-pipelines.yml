@@ -36,4 +36,5 @@ steps:
   condition: succeededOrFailed()
   inputs:
     testResultsFiles: "**/junit_report.xml"
+    searchFolder: $(Agent.BuildDirectory)
   displayName: Publish test results
