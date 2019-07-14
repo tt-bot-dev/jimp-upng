@@ -1,5 +1,5 @@
 const { encoders: {"image/png": encode},
-    decoders: {"image/png": decode} } = require("../index.js");
+    decoders: {"image/png": decode} } = require("../index.js")();
 const { readFileSync } = require("fs");
 describe("parsing a static image", function() {
     const image = decode(readFileSync("./png-image.png"));
