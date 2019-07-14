@@ -15,9 +15,9 @@ function decode(data) {
         frames: d.frames.length ? d.frames.slice(1).map(f => new ImageFrame(f)) : [],
         colorDepth: d.depth,
         colorType: d.ctype,
-        delay: d.frames[0].delay,
-        dispose: d.frames[0].dispose,
-        blend: d.frames[0].blend
+        delay: d.frames[0] && d.frames[0].delay,
+        dispose: d.frames[0] && d.frames[0].dispose,
+        blend: d.frames[0] && d.frames[0].blend
     };
 }
 
