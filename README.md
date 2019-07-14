@@ -15,7 +15,7 @@ In this example, if you swap `upngPlugin` with `require("@jimp/types")`, you wil
 ## API
 ### Image#bitmap
 There are some additional properties to the image bitmap:
-#### `bitmap.frames: ImageFrame[]`
+#### `frames: ImageFrame[]`
 An array of ImageFrames representing the image frames of a PNG
 #### `colorDepth: number`
 The color depth of an image
