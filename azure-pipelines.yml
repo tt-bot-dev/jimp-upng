@@ -28,7 +28,7 @@ steps:
 
 - script: |
     npm install -g jasmine
-    npm install github:appcelerator/jasmine-junit-reporter
+    npm install -g github:appcelerator/jasmine-junit-reporter
     jasmine --config=jasmine.cfg.json --reporter=jasmine-junit-reporter
   displayName: "Run the tests"
 
