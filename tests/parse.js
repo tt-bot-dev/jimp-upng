@@ -2,7 +2,7 @@ const { encoders: {"image/png": encode},
     decoders: {"image/png": decode} } = require("../index.js");
 const { readFileSync } = require("fs");
 describe("parsing a static image", function() {
-    const image = decode(readFileSync("./png-image.png");
+    const image = decode(readFileSync("./png-image.png"));
     it("it has 0 frames", function() {
         expect(image.frames).toBe(0);
     });
