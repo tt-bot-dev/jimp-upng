@@ -24,7 +24,7 @@ describe("static image", function() {
 });
 
 describe("animated image", function() {
-    const image = decode(readFileSync("./png-image.png"));
+    const image = decode(readFileSync("./apng-image.png"));
     it("has 19 frames excluding the first frame", function() {
         expect(image.frames.length).toBe(19);
     });
