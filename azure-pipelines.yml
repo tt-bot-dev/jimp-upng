@@ -33,6 +33,7 @@ steps:
   displayName: "Run the tests"
 
 - task: PublishTestResults@2
+  condition: succeededOrFailed()
   inputs:
     testResultsFiles: junit_report.xml
   displayName: Publish test results
