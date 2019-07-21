@@ -40,11 +40,9 @@ class ImageFrame {
 
         /**
          * The color data
-         * @type {Uint8Array}
+         * @type {Buffer}
          */
-        this.data = (rawFrameData instanceof Uint8Array) 
-        ? rawFrameData.data 
-        : new Uint8Array(rawFrameData.data);
+        this.data = Buffer.from(rawFrameData.data.buffer);
 
         /**
          * The delay of the frame in milliseconds

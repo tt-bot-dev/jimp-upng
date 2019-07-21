@@ -7,7 +7,7 @@ const upng = require("upng-js"),
 function decode(data) {
     const d = upng.decode(data.buffer);
     return {
-        data: d.data,
+        data: Buffer.from(d.data.buffer),
         width: d.width,
         height: d.height,
 
