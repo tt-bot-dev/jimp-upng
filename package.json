@@ -11,7 +11,7 @@
   "license": "MIT",
   "private": false,
   "peerDependencies": {
-    "@jimp/custom": "^0.6.4"
+    "@jimp/custom": "^0.10.1"
   },
   "dependencies": {
     "upng-js": "^2.1.0"
