@@ -1,5 +1,5 @@
 # jimp-upng
-Switches out [jimp](https://github.com/oliver-moran/jimp)'s default parser to [UPNG.js](https://github.com/photopea/UPNG.js)
+Replaces [jimp](https://github.com/oliver-moran/jimp)'s default parser with [UPNG.js](https://github.com/photopea/UPNG.js)
 
 ## Usage
 Simply load jimp-upng **after** @jimp/types or anything that modifies the encoders and/or decoders of the `image/png` or the `image/apng` type:
@@ -10,7 +10,6 @@ const Jimp = require("@jimp/custom")({
     types: [ require("@jimp/types"), upngPlugin ]
 });
 ```
-In this example, if you swap `upngPlugin` with `require("@jimp/types")`, you will end up using the default parser.
 
 ## API
 ### Image#bitmap

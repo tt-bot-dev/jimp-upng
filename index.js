@@ -28,7 +28,7 @@ function encode(img) {
         0,
         [img.bitmap.delay, ...img.bitmap.frames.map(f => f.delay)]));
 }
-const ex = () => ({
+const jimpUpng = () => ({
     mime: {
         [mime]: "png",
         [trueMime]: ["apng", "png"]
@@ -59,12 +59,12 @@ const ex = () => ({
     }
 });
 
-ex.ImageFrame = ImageFrame;
+jimpUpng.ImageFrame = ImageFrame;
 /**
  * The methods of frame disposal
  * @enum {number}
  */
-ex.APNGFrameDisposal = {
+jimpUpng.APNGFrameDisposal = {
     /**
      * Don't do anything
      */
@@ -83,7 +83,7 @@ ex.APNGFrameDisposal = {
  * The methods of frame blending
  * @enum {number}
  */
-ex.APNGFrameBlend = {
+jimpUpng.APNGFrameBlend = {
     /**
      * Overwrite the old source
      */
@@ -94,4 +94,4 @@ ex.APNGFrameBlend = {
     OVER: 1
 };
 
-module.exports = ex;
+module.exports = jimpUpng;

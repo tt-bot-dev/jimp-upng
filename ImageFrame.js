@@ -82,20 +82,18 @@ class ImageFrame {
             dispose: 1,
             blend: 0,
             rect: {
-                x: (opts && opts.rect &&
-                    opts.rect.x != null) ? opts.x : 0,
-                y: (opts && opts.rect &&
-                    opts.rect.y != null) ? opts.y : 0,
-                width: (opts && opts.rect &&
-                    opts.rect.width != null) ? opts.rect.height : img.bitmap.width,
-                height: (opts && opts.rect &&
-                    opts.rect.height != null) ? opts.rect.height : img.bitmap.height
+                x: opts && opts.rect &&
+                    opts.rect.x != null ? opts.x : 0,
+                y: opts && opts.rect &&
+                    opts.rect.y != null ? opts.y : 0,
+                width: opts && opts.rect &&
+                    opts.rect.width != null ? opts.rect.height : img.bitmap.width,
+                height: opts && opts.rect &&
+                    opts.rect.height != null ? opts.rect.height : img.bitmap.height
             },
             data: img.bitmap.data
         }, o);
-        return new ImageFrame({
-            ...opt,
-        });
+        return new ImageFrame(opt);
     }
 }
 

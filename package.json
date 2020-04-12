@@ -1,10 +1,10 @@
 {
   "name": "jimp-upng",
-  "version": "1.0.0",
-  "description": "Switches out the default JIMP PNG parser for UPNG.js",
+  "version": "1.0.1",
+  "description": "Replaces the default JIMP PNG parser with UPNG.js",
   "main": "index.js",
   "repository": "https://github.com/tt-bot-dev/jimp-upng",
-  "author": "TTtie <tttiett@outlook.com>",
+  "author": "TTtie <me@tttie.cz>",
   "contributors": [
     "tt.bot dev team (https://github.com/tt-bot-dev)"
   ],
@@ -15,5 +15,8 @@
   },
   "dependencies": {
     "upng-js": "^2.1.0"
+  },
+  "devDependencies": {
+    "@tt-bot-dev/eslint-config": "^1.0.2"
   }
 }

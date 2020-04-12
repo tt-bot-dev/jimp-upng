@@ -1,5 +1,5 @@
-"use strict"
-const { decoders: {"image/png": decode} } = require("../index.js")();
+"use strict";
+const { decoders: { "image/png": decode } } = require("../index.js")();
 const { readFileSync } = require("fs");
 describe("static image", function() {
     const image = decode(readFileSync("./png-image.png"));
