@@ -2,7 +2,7 @@
 const upng = require("upng-js"),
     ImageFrame = require("./ImageFrame"),
     mime = "image/png",
-    trueMime = "image/apng";
+    animatedMime = "image/apng";
 
 function decode(data) {
     const d = upng.decode(data.buffer);
@@ -11,7 +11,6 @@ function decode(data) {
         width: d.width,
         height: d.height,
 
-        // HACK: JIMP does not pass the image along :(
         frames: d.frames.length ? d.frames.slice(1).map(f => new ImageFrame(f)) : [],
         colorDepth: d.depth,
         colorType: d.ctype,
@@ -31,21 +30,21 @@ function encode(img) {
 const jimpUpng = () => ({
     mime: {
         [mime]: "png",
-        [trueMime]: ["apng", "png"]
+        [animatedMime]: ["apng", "png"]
     },
     constants: {
         MIME_PNG: mime,
-        MIME_APNG: trueMime
+        MIME_APNG: animatedMime
     },
     hasAlpha: {
         [mime]: true,
-        [trueMime]: true
+        [animatedMime]: true
     },
     decoders: {
         [mime]() {
             return decode.apply(this, arguments);
         },
-        [trueMime]() {
+        [animatedMime]() {
             return decode.apply(this, arguments);
         }
     },
@@ -53,7 +52,7 @@ const jimpUpng = () => ({
         [mime]() {
             return encode.apply(this, arguments);
         },
-        [trueMime]() {
+        [animatedMime]() {
             return encode.apply(this, arguments);
         }
     }
@@ -70,7 +69,7 @@ jimpUpng.APNGFrameDisposal = {
      */
     NONE: 0,
     /**
-     * Restore the frame to background
+     * Restore the frame to the background
      */
     BACKGROUND: 1,
     /**

@@ -57,6 +57,7 @@ class ImageFrame {
 
     /**
      * Returns a JIMP compatible bitmap with the frame metadata
+     * @returns {import("@jimp/core").Bitmap}
      */
     get bitmap() {
         return {
@@ -72,7 +73,7 @@ class ImageFrame {
 
     /**
      * Create an ImageFrame from a JIMP image
-     * @param {*} img The JIMP image
+     * @param {import("@jimp/core").Image} img The JIMP image
      * @param {object} opts The options for the frame
      */
     static createFromJIMP(img, opts) {
@@ -83,9 +84,9 @@ class ImageFrame {
             blend: 0,
             rect: {
                 x: opts && opts.rect &&
-                    opts.rect.x != null ? opts.x : 0,
+                    opts.rect.x != null ? opts.rect.x : (opts.x || 0),
                 y: opts && opts.rect &&
-                    opts.rect.y != null ? opts.y : 0,
+                    opts.rect.y != null ? opts.rect.y : (opts.y || 0),
                 width: opts && opts.rect &&
                     opts.rect.width != null ? opts.rect.height : img.bitmap.width,
                 height: opts && opts.rect &&
