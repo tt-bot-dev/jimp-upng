@@ -62,7 +62,10 @@ declare namespace jimpUPNG {
         public raw: UPNGImageData;
 
         get bitmap(): UPNGBitmap;
-        public static createFromJIMP(img: Image, opts?: UPNGImageData);
+        public static createFromJIMP(img: Image, opts?: UPNGImageData & {
+            x?: number;
+            y?: number;
+        });
     }
 
     /**

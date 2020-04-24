@@ -77,9 +77,9 @@ class ImageFrame {
      * @param {object} opts The options for the frame
      */
     static createFromJIMP(img, opts) {
-        const o = Object.assign({}, opts);
+        const o = {...opts}
         delete o.rect;
-        const opt = Object.assign({
+        const opt = {
             dispose: 1,
             blend: 0,
             rect: {
@@ -92,8 +92,9 @@ class ImageFrame {
                 height: opts && opts.rect &&
                     opts.rect.height != null ? opts.rect.height : img.bitmap.height
             },
-            data: img.bitmap.data
-        }, o);
+            data: img.bitmap.data,
+            ...o
+        };
         return new ImageFrame(opt);
     }
 }
