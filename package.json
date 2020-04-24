@@ -1,6 +1,6 @@
 {
   "name": "jimp-upng",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Replaces the default JIMP PNG parser with UPNG.js",
   "main": "index.js",
   "repository": "https://github.com/tt-bot-dev/jimp-upng",

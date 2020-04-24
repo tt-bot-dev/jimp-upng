@@ -84,9 +84,9 @@ class ImageFrame {
             blend: 0,
             rect: {
                 x: opts && opts.rect &&
-                    opts.rect.x != null ? opts.rect.x : (opts.x || 0),
+                    opts.rect.x != null ? opts.rect.x : opts && (opts.x || 0),
                 y: opts && opts.rect &&
-                    opts.rect.y != null ? opts.rect.y : (opts.y || 0),
+                    opts.rect.y != null ? opts.rect.y : opts && (opts.y || 0),
                 width: opts && opts.rect &&
                     opts.rect.width != null ? opts.rect.height : img.bitmap.width,
                 height: opts && opts.rect &&
