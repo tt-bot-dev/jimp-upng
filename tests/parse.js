@@ -47,13 +47,8 @@ describe("animated image", function () {
 });
 
 describe("ImageFrame", function () {
-    let frame;
-    it("can convert JIMP frames to ImageFrames", function () {
-        expect(function () {
-            frame = ImageFrame.createFromJIMP({
-                bitmap: animatedImage
-            })
-        }).not.toThrow();
+    let frame = ImageFrame.createFromJIMP({
+        bitmap: animatedImage
     });
     it("can convert ImageFrames to a JIMP compatible bitmap", function () {
         expect(function() {
