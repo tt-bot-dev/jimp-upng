@@ -4,6 +4,7 @@ const { readFileSync } = require("fs");
 const image = decode(readFileSync("./png-image.png"));
 const animatedImage = decode(readFileSync("./apng-image.png"));
 const ImageFrame = require("../ImageFrame");
+const frame = ImageFrame.createFromJIMP(animatedImage);
 describe("static image", function() {
     it("has 0 frames", function() {
         expect(image.frames.length).toBe(0);
@@ -47,7 +48,6 @@ describe("animated image", function() {
 });
 
 describe("ImageFrame", function() {
-    const frame = ImageFrame.createFromJIMP(animatedImage);
     it("can convert JIMP frames to ImageFrames", function() {
         expect(frame).not.toThrow();
     });
