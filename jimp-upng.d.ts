@@ -1,5 +1,4 @@
-import { Bitmap } from "@jimp/types";
-import { JimpType, Image } from "@jimp/core";
+import { JimpType, Image, Bitmap } from "@jimp/core";
 declare function jimpUPNG(): JimpType<jimpUPNG.UPNGImage>;
 
 declare namespace jimpUPNG {
@@ -44,7 +43,6 @@ declare namespace jimpUPNG {
         dispose: APNGFrameDisposal;
         blend: APNGFrameBlend;
         data: Uint8Array;
-        delay: number;
     }
 
     /**
